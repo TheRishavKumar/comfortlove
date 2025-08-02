@@ -1,89 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hug Time 🤗</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Hug from Dudu & Bubu 💖</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      background: #ffeaf5;
       font-family: 'Comic Sans MS', cursive;
-      color: #d63384;
-      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      text-align: center;
     }
 
     h1 {
-      margin-top: 20px;
-      font-size: 2rem;
-      animation: fadeIn 1s ease-in;
+      color: #d63384;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
 
-    .hug-img {
+    .gif {
       width: 220px;
-      margin: 30px 0;
-      animation: float 3s ease-in-out infinite;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
     }
 
-    .hug-btn {
-      padding: 14px 28px;
-      font-size: 1.1rem;
+    #hugBtn {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background-color: #ff69b4;
       border: none;
-      background: #ff85a2;
+      border-radius: 25px;
       color: white;
-      border-radius: 40px;
-      box-shadow: 0 4px 10px rgba(255, 105, 135, 0.4);
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: background 0.3s ease;
     }
 
-    .hug-btn:hover {
-      background: #ff5c8a;
+    #hugBtn:hover {
+      background-color: #ff85c1;
     }
+
+    .message {
+      margin-top: 20px;
+      color: #c71585;
+      font-size: 1.4rem;
+      display: none;
+      animation: fadeIn 1s forwards;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: float 5s linear forwards;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
 <body>
 
-  <h1>A warm hug just for you 💖</h1>
+  <h1>Warmest Hug for You 💞</h1>
+  <img src="https://media.tenor.com/6jaDm2Pv6dUAAAAm/dare-aggie-dare-aggie-bunny.webp" class="gif" alt="Hug Gif" />
 
-  <img id="hugGif" class="hug-img" src="https://media.tenor.com/SG-OhxqYULUAAAAi/bubu-dudu.gif" alt="Hug GIF">
+  <button id="hugBtn">Tap for a warm hug 💖</button>
 
-  <button class="hug-btn" onclick="moreHugs()">More Hugs 💞</button>
+  <div class="message" id="hugMessage">Here's your virtual hug, my precious! 🤗</div>
 
-  <audio id="hugSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_65f8ec8073.mp3?filename=soft-bell-126734.mp3"></audio>
+  <div class="hearts" id="heartsContainer"></div>
+
+  <audio id="hugSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_4c8c0489f7.mp3"></audio>
 
   <script>
-    const hugs = [
-      "https://media.tenor.com/SG-OhxqYULUAAAAi/bubu-dudu.gif",
-      "https://media.tenor.com/j0thz0Rr_rEAAAAi/bubu-dudu-love.gif",
-      "https://media.tenor.com/4z8u_UVobf0AAAAi/bubu.gif",
-      "https://media.tenor.com/aa3tb77PXlUAAAAi/bubu-and-dudu.gif"
-    ];
+    const btn = document.getElementById("hugBtn");
+    const msg = document.getElementById("hugMessage");
+    const audio = document.getElementById("hugSound");
+    const heartsContainer = document.getElementById("heartsContainer");
 
-    function moreHugs() {
-      const gif = document.getElementById("hugGif");
-      const sound = document.getElementById("hugSound");
-      gif.src = hugs[Math.floor(Math.random() * hugs.length)];
-      sound.currentTime = 0;
-      sound.play();
-    }
+    btn.addEventListener("click", () => {
+      msg.style.display = "block";
+      audio.play();
+
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "0px";
+        heart.style.animationDuration = 2 + Math.random() * 2 + "s";
+        heartsContainer.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }
+    });
   </script>
-
 </body>
 </html>
