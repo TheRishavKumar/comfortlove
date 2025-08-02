@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hug Time 🤗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      font-family: 'Comic Sans MS', cursive;
+      color: #d63384;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2rem;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .hug-img {
+      width: 220px;
+      margin: 30px 0;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hug-btn {
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      border: none;
+      background: #ff85a2;
+      color: white;
+      border-radius: 40px;
+      box-shadow: 0 4px 10px rgba(255, 105, 135, 0.4);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .hug-btn:hover {
+      background: #ff5c8a;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>A warm hug just for you 💖</h1>
+
+  <img id="hugGif" class="hug-img" src="https://media.tenor.com/SG-OhxqYULUAAAAi/bubu-dudu.gif" alt="Hug GIF">
+
+  <button class="hug-btn" onclick="moreHugs()">More Hugs 💞</button>
+
+  <audio id="hugSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_65f8ec8073.mp3?filename=soft-bell-126734.mp3"></audio>
+
+  <script>
+    const hugs = [
+      "https://media.tenor.com/SG-OhxqYULUAAAAi/bubu-dudu.gif",
+      "https://media.tenor.com/j0thz0Rr_rEAAAAi/bubu-dudu-love.gif",
+      "https://media.tenor.com/4z8u_UVobf0AAAAi/bubu.gif",
+      "https://media.tenor.com/aa3tb77PXlUAAAAi/bubu-and-dudu.gif"
+    ];
+
+    function moreHugs() {
+      const gif = document.getElementById("hugGif");
+      const sound = document.getElementById("hugSound");
+      gif.src = hugs[Math.floor(Math.random() * hugs.length)];
+      sound.currentTime = 0;
+      sound.play();
+    }
+  </script>
+
+</body>
+</html>
