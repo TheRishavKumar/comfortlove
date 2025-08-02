@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Comfort Zone 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff0f5;
+      font-family: 'Comic Sans MS', cursive;
+      color: #d63384;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      font-size: 2.2rem;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .card {
+      background: #ffe6ea;
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(255, 105, 135, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-direction: column;
+      text-decoration: none;
+      color: #d63384;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.07);
+      background: #ffc9dc;
+    }
+
+    .card img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .characters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .characters img {
+      width: 100px;
+      border-radius: 15px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #c71585;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Welcome to Your Comfort Zone 💗</header>
+
+  <div class="characters">
+    <img src="https://media.tenor.com/BDc9UmivKg8AAAAi/bubu.gif" alt="Dudu" />
+    <img src="https://media.tenor.com/SG-OhxqYULUAAAAi/bubu-dudu.gif" alt="Bubu" />
+  </div>
+
+  <div class="menu">
+    <a class="card" href="hug.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Hug">
+      Hug Time
+    </a>
+
+    <a class="card" href="game.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="Game">
+      Chocolate Game
+    </a>
+
+    <a class="card" href="care.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/1008/1008927.png" alt="Care">
+      Care Tips
+    </a>
+
+    <a class="card" href="message.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/535/535234.png" alt="Message">
+      Your Love Letter
+    </a>
+
+    <a class="card" href="gallery.html">
+      <img src="https://cdn-icons-png.flaticon.com/512/126/126472.png" alt="Gallery">
+      Gallery 💕
+    </a>
+  </div>
+
+  <footer>Made with all my love 💌 — Rishav (your Dudu) 🧸</footer>
+
+</body>
+</html>
